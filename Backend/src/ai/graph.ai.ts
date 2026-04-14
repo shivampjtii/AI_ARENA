@@ -1,4 +1,4 @@
-import { StateGraph, type GraphNode, START, END, StateSchema, type CompiledStateGraph } from "@langchain/langgraph";
+import { StateGraph, type GraphNode, START, END, StateSchema } from "@langchain/langgraph";
 import { z } from "zod";
 import { geminiModel, mistralAIModel, cohereModel } from "./model.ai.js";
 import { createAgent, HumanMessage, providerStrategy } from "langchain";
@@ -70,11 +70,7 @@ const judgeNode: GraphNode<typeof state> = async (state) => {
       // winner
     },
   };
-
 };
-
-
-
 
 const graph = new StateGraph(state)
   .addNode("solution_node", solutionNode)
